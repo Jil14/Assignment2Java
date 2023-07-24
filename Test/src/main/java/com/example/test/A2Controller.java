@@ -88,12 +88,12 @@ public class A2Controller {
 
     @FXML
     private Button typeZ;
-    public int  availableAlphabets[] ={1,2,2,4,12,2,3,2,8,1,1,4,2,6,8,2,1,6,4,6,4,2,2,1,2,1};
+    //public int  availableAlphabets[] ={1,2,2,4,12,2,3,2,8,1,1,4,2,6,8,2,1,6,4,6,4,2,2,1,2,1};
     public String word="";
     A2Model model=new A2Model();
     public ArrayList<String> WordsEntered = new ArrayList<>();
     @FXML
-    public Label points;
+    public Label Total;
 
     @FXML
     public Label ErrMsg = new Label();
@@ -320,14 +320,9 @@ public class A2Controller {
         word+="Z";
         wordCatch.setText(word);
         if(model.availableAlphabets[25]==1)
-
             typeZ.setVisible(false);
     }
-//    @FXML
-//    void clearButton(ActionEvent event) {
-//            fetchWord=fetchWord.substring(0,fetchWord.length()-1);
-//            wordCatch.setText(fetchWord);
-//    }
+
 
 
     @FXML
@@ -335,13 +330,14 @@ public class A2Controller {
         if(model.gameOver()==false){
             ErrMsg.setVisible(false);
             word=wordCatch.getText();
-            int Total=0;
+            int Totalpts=0;
             int errorsChecked= model.getCheck(word);
             System.out.println(errorsChecked);
             if(errorsChecked==100){
                 WordsEntered.add(word);
-                Total= model.ptsCalculate(word);
-                points.setText(Integer.toString(Total));
+                Totalpts= model.ptsCalculate(word);
+                Total.setText(Integer.toString(Totalpts));
+
                 word="";
                 wordCatch.setText("");
             }
